@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+
+body{
+    background-color: #080710;
+}
+h1{color: white;}
+h2{color: white;}
+
+input{
+color: white;
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 20px;
+    font-weight: 700px;
+}
+label{
+color: white;
+font-size: 22px;
+}
+form{
+    height: 900px;
+    width: 900px;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-56%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 30px 35px;
+}
+</style>
+<div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+<center>
+
+    <form action="" method="get" novalidate>
+        <h1>Добро пожаловать, {{ current_user.firstname }} {{ current_user.lastname }}.</h1>
+    <h2>Отзывов в очереди: {{ current_user.queue }}</h2>
+        <p>
+            {{ form.text.label }}<br>
+            {{ form.text(rows=10, cols =96) }}<br>
+            {% for error in form.text.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.answer.label }}<br>
+            {{ form.answer(rows=10, cols =96) }}<br>
+            {% for error in form.answer.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <br><br>
+        <p>{{ form.submit() }} {{ form.skip() }} {{ form.redirect() }}</p>
+
+        </form>
+</center>
+
+{% endblock %}

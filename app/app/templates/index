@@ -1,0 +1,14 @@
+<p>
+            {{ form.answer.label }}<br>
+            {{ form.answer.size=32) }}<br>
+            {% for error in form.answer.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.date_create.label }}<br>
+            {{ form.date_create(size=32) }}<br>
+            {% for error in form.date_create.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
